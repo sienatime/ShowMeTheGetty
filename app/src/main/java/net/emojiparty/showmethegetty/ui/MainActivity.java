@@ -1,12 +1,12 @@
 package net.emojiparty.showmethegetty.ui;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProviders;
+import net.emojiparty.showmethegetty.BR;
 import net.emojiparty.showmethegetty.R;
-import net.emojiparty.showmethegetty.data.Business;
 
 public class MainActivity extends AppCompatActivity {
   private BusinessViewModel viewModel;
@@ -16,12 +16,10 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    final ViewDataBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    binding.setLifecycleOwner(this);
+
     viewModel = ViewModelProviders.of(this).get(BusinessViewModel.class);
-    viewModel.getBusiness().observe(this, new Observer<Business>() {
-      @Override public void onChanged(Business business) {
-        TextView name = findViewById(R.id.biz_name);
-        name.setText(business.getName());
-      }
-    });
+    binding.setVariable(BR.viewModel, viewModel);
   }
 }

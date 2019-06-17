@@ -20,6 +20,9 @@ android {
             it.buildConfigField 'String', 'YELP_FUSION_API_KEY', "\"$System.env.YELP_FUSION_API_KEY\""
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
