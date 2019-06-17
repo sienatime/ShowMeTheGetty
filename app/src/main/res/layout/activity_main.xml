@@ -17,13 +17,60 @@
 
     <TextView
         android:id="@+id/biz_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@{viewModel.business.name}"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="@{viewModel.business.name}"
+        app:layout_constraintVertical_bias="0.022"
+        tools:text="The Getty Center"
+        style="@style/headerText"
+        />
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@{@string/rating(viewModel.business.rating)}"
+        app:layout_constraintStart_toStartOf="@+id/biz_name"
+        app:layout_constraintTop_toBottomOf="@+id/biz_name"
+        tools:text="Average Rating: 4.5"
+        />
+    <TextView
+        android:id="@+id/review_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        tools:text="3550 Reviews"
+        android:text="@{@string/review_count(viewModel.business.reviewCount)}"
+        app:layout_constraintStart_toEndOf="@+id/rating"
+        app:layout_constraintTop_toTopOf="@+id/rating"
+        />
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="blah blah\nLA, CA"
+        android:text="@{viewModel.business.location.getDisplayAddress()}"
+        app:layout_constraintStart_toStartOf="@+id/rating"
+        app:layout_constraintTop_toBottomOf="@+id/rating"
+        />
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{viewModel.business.displayPhone}"
+        app:layout_constraintStart_toStartOf="@+id/address"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        tools:text="(310) 555-5555"
         />
 
   </androidx.constraintlayout.widget.ConstraintLayout>

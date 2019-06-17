@@ -20,12 +20,41 @@ public class Business {
     return name;
   }
 
+  public double getRating() {
+    return rating;
+  }
+
+  public int getReviewCount() {
+    return reviewCount;
+  }
+
+  public String getDisplayPhone() {
+    return displayPhone;
+  }
+
+  public Location getLocation() {
+    return location;
+  }
+
   public static class Location {
     private String address1;
     private String city;
     @SerializedName("zip_code") private String zipCode;
     private String country;
     private String state;
+    @SerializedName("display_address") private List<String> displayAddress;
+
+    public String getDisplayAddress() {
+      if (displayAddress != null && displayAddress.size() > 0) {
+        StringBuilder builder = new StringBuilder();
+        for (String line : displayAddress) {
+          builder.append(line);
+          builder.append("\n");
+        }
+        return builder.toString();
+      }
+      return null;
+    }
   }
 
   public static class Hours {

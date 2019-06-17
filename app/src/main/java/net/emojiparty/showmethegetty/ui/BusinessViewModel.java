@@ -15,7 +15,10 @@ public class BusinessViewModel extends ViewModel {
     if (business.getValue() == null) {
       new YelpRepository().getGettyCenter().enqueue(new Callback<Business>() {
         @Override public void onResponse(Call<Business> call, Response<Business> response) {
-          business.setValue(response.body());
+          if (response.body() != null) {
+            Business bizResponse = response.body();
+            business.setValue(bizResponse);
+          }
         }
 
         @Override public void onFailure(Call<Business> call, Throwable t) {
