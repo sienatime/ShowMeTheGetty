@@ -16,6 +16,10 @@ public class Business {
   private Location location;
   private List<Hours> hours;
 
+  public String getName() {
+    return name;
+  }
+
   public static class Location {
     private String address1;
     private String city;
