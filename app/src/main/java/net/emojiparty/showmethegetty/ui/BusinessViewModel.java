@@ -1,5 +1,6 @@
 package net.emojiparty.showmethegetty.ui;
 
+import android.content.Context;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import net.emojiparty.showmethegetty.data.Business;
@@ -27,5 +28,9 @@ public class BusinessViewModel extends ViewModel {
       });
     }
     return business;
+  }
+
+  public String getBizHours(Context context, Business business) {
+    return BusinessHours.getBizHours(context, business);
   }
 }

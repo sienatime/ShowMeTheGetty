@@ -57,9 +57,22 @@ public class Business {
     }
   }
 
+  public List<Hours> getHours() {
+    return hours;
+  }
+
   public static class Hours {
     private List<Open> open;
     @SerializedName("is_open_now") boolean isOpenNow;
+
+    // indexes with null are closed days
+    public Open[] openAndClosedDays() {
+      Open[] days = new Open[7]; // 7 days of the week
+      for (Open open : open) {
+        days[open.getDay()] = open;
+      }
+      return days;
+    }
   }
 
   // day: From 0 to 6, representing day of the week from Monday to Sunday.
@@ -67,5 +80,16 @@ public class Business {
     private String start;
     private String end;
     private int day;
+
+    public String getStart() {
+      return start;
+    }
+    public String getEnd() {
+      return end;
+    }
+
+    public int getDay() {
+      return day;
+    }
   }
 }
