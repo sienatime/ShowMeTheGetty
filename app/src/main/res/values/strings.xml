@@ -13,4 +13,6 @@
 
   <string name="biz_hours_format_open">%s: %s</string>
   <string name="biz_hours_format_closed">%s: Closed</string>
+
+  <string name="see_photos">See Photos</string>
 </resources>

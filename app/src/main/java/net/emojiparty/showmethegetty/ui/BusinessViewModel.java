@@ -1,8 +1,11 @@
 package net.emojiparty.showmethegetty.ui;
 
 import android.content.Context;
+import android.util.Log;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import net.emojiparty.showmethegetty.R;
 import net.emojiparty.showmethegetty.data.Business;
 import net.emojiparty.showmethegetty.data.YelpRepository;
 import retrofit2.Call;
@@ -23,7 +26,7 @@ public class BusinessViewModel extends ViewModel {
         }
 
         @Override public void onFailure(Call<Business> call, Throwable t) {
-          // TODO do something on error
+          Log.e("BusinessViewModel", "Failed to load from Yelp API: " + t.getMessage());
         }
       });
     }
@@ -32,5 +35,14 @@ public class BusinessViewModel extends ViewModel {
 
   public String getBizHours(Context context, Business business) {
     return BusinessHours.getBizHours(context, business);
+  }
+
+  public void openPhotosFragment(Context context) {
+    FragmentActivity activity = (FragmentActivity) context;
+    activity.getSupportFragmentManager()
+        .beginTransaction()
+        .add(R.id.fragment_container, new PhotosFragment())
+        .addToBackStack(null)
+        .commit();
   }
 }

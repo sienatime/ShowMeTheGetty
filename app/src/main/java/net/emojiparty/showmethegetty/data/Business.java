@@ -32,6 +32,10 @@ public class Business {
     return displayPhone;
   }
 
+  public List<String> getPhotos() {
+    return photos;
+  }
+
   public Location getLocation() {
     return location;
   }
